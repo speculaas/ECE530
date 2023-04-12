@@ -6,14 +6,20 @@ e-mail: tallpik3@unm.edu
 
 ## Abstract
 
+For me, I think the most difficult part of this assignment is to distill all the relavent informations: initially, I began from the wikipage (https://wiki.openstack.org/wiki/OpenStack) listed on the homework assignment document. A initial confusion is about how many VMs should I use and which service to place together.  This confusion was solved by the example architecture given by Openstack install guide and it's simple: just 2 VMs and the  physical hardware requirements happened to match the homework description I went on to try understand the requirements for the host VM for Openstack. In the end, I still could not figure out all the details, including the network terminologies.  I used vagrant to create VMs with basic Ubuntu 20 base image and followed the Openstack minimum install guide.
+
 ## Description of the format and some details of the report
 * About deployment details: the commands and their console outputs are listed in monospaced sections. And below the commands and outputs are comments, observation and references.
 * About the screenshots: there are two type of console screenshots. One is of the physical thinkpad machine. Another is of ssh terminal of MacOS.
 
 ## Troubleshooting processes
-* initial login to mariadb failed
-* cannot connect to db
+* initial login to mariadb failed: the first time I tried to log in, the prompt hinted me to just hit enter, but I still could not get into the sql client. I googled and found solution.
+* cannot connect to db: I tried several solution and in the end, I found the strange cause: the sql I executed in one ssh terminal is not seen from a subsequent terminal log in.
+* cannot use Vagrant to attach hdd: after googling, I found solution from hashicorp vagrant github issue discussion: I cannot use port 0 and 1 for hdd.
 
+## Conclusion
+
+I am very grateful for the deadline extension. However I still cannot finished all. I didn't complete Swift. And I was not able  to log into the CIRROS VM I created. The reason is network setting. Currrently the cause seemed to be that I created subnet range that doesnt contain the gateway. I hope I could have more time to fix this problem and to complete the rest of the assignment. But I think this is an very educational homework assignment. There are several background details I wants to study more and I also wanted to  compare some parts of Openstack to the public clouds. For example, how Netflix implements identity service. ps. I also uploaded the original source of this report to my github. This submission is converted from .md to pdf using https://cloudconvert.com/.
 
 # ECE530 HW1-report - checklist
 ## Keystone:
@@ -25,10 +31,6 @@ e-mail: tallpik3@unm.edu
 ```
 # . admin-openrc
 # openstack token issue
-/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
-/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Field      | Value                                                                                                                                                                                   |
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -39,10 +41,6 @@ e-mail: tallpik3@unm.edu
 +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 # openstack user create --domain default --password-prompt demo
-/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
-/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
 User Password:
 Repeat User Password:
 +---------------------+----------------------------------+
@@ -58,10 +56,6 @@ Repeat User Password:
 
 
 # openstack user list
-/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
-/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
 +----------------------------------+-----------+
 | ID                               | Name      |
 +----------------------------------+-----------+
@@ -75,10 +69,6 @@ Repeat User Password:
 +----------------------------------+-----------+
 
 # openstack role list
-/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
-/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
-  from cryptography.utils import int_from_bytes
 +----------------------------------+--------+
 | ID                               | Name   |
 +----------------------------------+--------+
