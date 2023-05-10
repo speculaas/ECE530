@@ -1,6 +1,6 @@
 # CS500 final
 
-## list
+## CS500 lecture list
 ```
 midterm 1
 previous link : https://list.unm.edu/cgi-bin/wa?A2=CS500-L;7c67dac8.2303&S=
@@ -52,10 +52,39 @@ Lecture042723 ; cook-levin thm ; Clique to 3SAT ; Vertex-cover to 3SAT
 Lecture050223 ; Rice's thm ; space complexity
 Lecture050423 ; savitch's thm configuration i to j ; pspace-complete ; primitive recursive func. ; kleene minimization operator
 ```
+
+### Lecture030223.pdf ; closure properties of CFL
+* https://sites.cs.ucsb.edu/~cappello/136/lectures/17cfls/slides.pdf
+  * L1 ∩ L2 = \{anbnan| n ≥ 0\}, which is known not to be a CFL
+
+### Lecture041823 ; tseytin transformation ; def of NP ; TM configuration
+* https://www.youtube.com/watch?v=v2uW258qIsM
+  * bi-implication is just a conjunction  of two implications  one from left to right and one from  right to left  and if we consider the implication from  left to right  we see p implies q or r  is equivalent to not p or q or r  which is a clause itself  and the other direction q or  r implies p is equivalent to  not q or r or p and by the morgan rules  it can be written in this way  and by applying distributivity we get  these two clauses
+
+![](https://i.imgur.com/Ch9lNIW.png)
+
+![](https://i.imgur.com/BSfuWUB.png)
+
+![](https://i.imgur.com/FtvWK6J.png)
+
+![](https://i.imgur.com/eDAxOAS.png)
+
+![](https://i.imgur.com/IV873Pr.png)
+
+![](https://i.imgur.com/y8ydznh.png)
+
+![](https://i.imgur.com/YpXx0JQ.png)
+
+
 ## CS500 HW
 ### HW?
 * ADD - REGULAR
 * MULTIPLY
+
+### HW5
+* Q4, Show that the grammar G is ambiguous
+  * sipser ; DEFINITION 2.7 ; A string w is derived ambiguously in context-free grammar G if it has two or more different leftmost derivations. Grammar G is ambiguous if it generates some string ambiguously.
+* 
 
 ### HW6
 
@@ -70,12 +99,31 @@ Lecture050423 ; savitch's thm configuration i to j ; pspace-complete ; primitive
 * Q8, Prove that (N × N) is of the same cardinality as N. How about [(N × N) × N]? What can we then say about the cardinality of (N × N × ... × N) (k-times)?
 * Q9,  If A is a set, then suppose that f is a one-to-one function from A to P(A), the power set of A and let B = \{a ∈ A | a /∈ f(a)\}. For the following sets, give examples of at least three different functions from A to P(A) and construct the set B:
 
+### HW8
+* Q1, mapping reducibility and Turing reducibility
+  * https://www.cs.mcgill.ca/~prakash/Courses/Comp330/Notes/reductions.pdf
+    * Thus, for example, one can easily2 show that ATM ≤T ATM which is of course not possible with mapping reduction
+    * Indeed this is trivial, make sure you understand this.
+  * sipser ; The sensitivity of mapping reducibility to complementation is important in the use of reducibility to prove nonrecognizability of certain languages.
+  * https://cseweb.ucsd.edu/classes/fa01/cse105_B/hw3ans.pdf
+* Q2, Show that the Post Correspondance Problem is decidable over the unary alphabet
+  * https://cs.brown.edu/courses/gs019/asgn/hw2.sol.pdf
+* Q3, class P of languages whose membership can be decided by a TM using polynomially many steps in the size of the input is closed under complement.
+  * https://cseweb.ucsd.edu/classes/fa01/cse105_B/hw3ans.pdf
+* Q4, obtain the Conjunctive normal form (i.e. conjunction of disjunctions) of the following formulas. 
+* Q5, Prove that the procedure discussed in class to transform any formula into a conjunctive normal form preserves satisfiability, i.e. if the original formula is satisfiable, then the obtain formula is also satisfiable.
+* Q6, Say that two Boolean formulas are equivalent if they have the same set of variables and are true on the same set of assignments to those variables (i.e., they describe the same Boolean function). A Boolean formula is minimal if no shorter Boolean formula is equivalent to it. Let MIN-FORMULA be the collection of minimal Boolean formulas. Show that if P = NP, then MIN-FORMULA ∈ P.
+
 ## CS500 midterm
 
 ### midterm 1
 
 ### midterm 2
 
+#### DCFL (deterministic)
+* http://www.cs.toronto.edu/~ashe/CFL.pdf
+  * DCFL is not closed under union, and not closed under intersection.
+* 
 
 ## 18-404j-t.o.c /lecture-notes/
 
