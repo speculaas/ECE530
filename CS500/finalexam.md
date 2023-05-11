@@ -53,6 +53,9 @@ Lecture050223 ; Rice's thm ; space complexity
 Lecture050423 ; savitch's thm configuration i to j ; pspace-complete ; primitive recursive func. ; kleene minimization operator
 ```
 
+### Lecture020223.pdf ; minimization of DFA
+* The Quotient Construction ; How do we know in general when two states can be collapsed safely without changing the set accepted? [kozen]
+
 ### Lecture030223.pdf ; closure properties of CFL
 * https://sites.cs.ucsb.edu/~cappello/136/lectures/17cfls/slides.pdf
   * L1 ∩ L2 = \{anbnan| n ≥ 0\}, which is known not to be a CFL
@@ -61,25 +64,74 @@ Lecture050423 ; savitch's thm configuration i to j ; pspace-complete ; primitive
 * https://www.youtube.com/watch?v=v2uW258qIsM
   * bi-implication is just a conjunction  of two implications  one from left to right and one from  right to left  and if we consider the implication from  left to right  we see p implies q or r  is equivalent to not p or q or r  which is a clause itself  and the other direction q or  r implies p is equivalent to  not q or r or p and by the morgan rules  it can be written in this way  and by applying distributivity we get  these two clauses
 
-![](https://i.imgur.com/Ch9lNIW.png)
 
-![](https://i.imgur.com/BSfuWUB.png)
+||||
+|---|---|---|
+|![](https://i.imgur.com/Ch9lNIW.png)|![](https://i.imgur.com/BSfuWUB.png)| ![](https://i.imgur.com/YpXx0JQ.png)|
+|![](https://i.imgur.com/IV873Pr.png)|![](https://i.imgur.com/FtvWK6J.png)|
+|![](https://i.imgur.com/y8ydznh.png)|![](https://i.imgur.com/eDAxOAS.png)|
+|||
 
-![](https://i.imgur.com/FtvWK6J.png)
 
-![](https://i.imgur.com/eDAxOAS.png)
 
-![](https://i.imgur.com/IV873Pr.png)
+### Lecture042723 ; cook-levin thm ; Clique to 3SAT ; Vertex-cover to 3SAT
+* sipser ; 304 ; The Cook–Levin Theorem
+  * φcell ∧ φstart ∧ φmove ∧ φaccept
+  * Q and Γ are the state set and tape alphabet of N, respectively. Let C = Q ∪ Γ ∪ {#}
+* 
 
-![](https://i.imgur.com/y8ydznh.png)
+## CS500 mailing list
 
-![](https://i.imgur.com/YpXx0JQ.png)
+### converting a regular expression to a ndfa
+* Mogensen's compiler book, "Fig. 1.4 Constructing NFA fragments from regular expressions"
+* how to convert NFA to regular expression
+* some details mentioned by the Mogensen compiler book:
+  * These half-transitions are the entry and exit to the fragment and are used to connect it to other fragments or additional “glue” states.
+  * The symbol on the outgoing half-transition is not shown when an NFA fragment is shown as a dotted oval (it is “hidden” inside the oval).
+  * When an NFA fragment has been constructed for the whole regular expression, the construction is completed by connecting the outgoing half-transition to an accepting state.
+* And regarding concatenation, I think there is a difference between concatenating machines and regular expression: 
+
+### today lecture 021623
+* machine for \{}
+* machine for \{ε}, (NFA)
+* machine for \{ε}, (DFA)
+* Arden's Lemma
+  * Jeffrey D. Ullman et al's "Introduction to Automata Theory" 
+    * 3rd ed, 2006
+    * 1st edition
+  * https://wwwlehre.dhbw-stuttgart.de/~sschulz/TEACHING/FLA2016/FLA2016_ho.pdf
+  * 
+* 
+
+### conversion from pdas to grammars
+* what method/conversion did you use?
 
 
 ## CS500 HW
 ### HW?
 * ADD - REGULAR
 * MULTIPLY
+
+### HW2
+* Q1, prove in your own words that the machine only accepts binary representation of multiples of 3
+* Q3, intersection of two simpler languages. .. then combine using the construction
+* Q5, obtain an equivalent DFA for each of the following DFAs that has the minimal number of states
+
+### HW3
+* Q3, if A, B are regular languages, prove the following
+* Q4, prove the following languages are not regular using myhill-nerode theorem
+* Q5, define a homomorphism from A to B by defining the functions in each algebraic structure with their usual meaning
+
+### HW4
+* Q1, prove that removing unreachable states from a DFA leaves the resulting machine to be a DFA, unlike if a dead state is removed
+* Q2, 
+  * minimize product construction of HW2 Q3
+  * minimize the subset construction of HW2 Q4
+* Q3, use the pumping lemma to prove the following language not regular:
+* Q4, convert the NFAs in HW2 Q4 to the corresponding reg expr using Arden's lemma
+* Q5, convert reg expr to NFAs
+* Q6, regular grammars for NFAs in HW2 Q4
+* Q7, minimize Q5 (HW3 Q1) NFAs
 
 ### HW5
 * Q4, Show that the grammar G is ambiguous
@@ -117,12 +169,104 @@ Lecture050423 ; savitch's thm configuration i to j ; pspace-complete ; primitive
 ## CS500 midterm
 
 ### midterm 1
+#### Part 1
+* what is a regular language
+* difference: DFA, NFA
+* when are two FSM considered equivalent
+* type 0, 1, 2, 3 grammars
+  * https://en.wikipedia.org/wiki/Chomsky_hierarchy
+  * Type-0 ; Recursively enumerable ; Turing machine
+  * Type-1 ; Context-sensitive ; Linear-bounded non-deterministic Turing machine
+  * Type-2 ; Context-free ; Non-deterministic pushdown automaton
+  * https://en.wikipedia.org/wiki/Recursively_enumerable_language
+    * i.e., if there exists a Turing machine which will enumerate all valid strings of the language.
+    * https://en.wikipedia.org/wiki/Recursive_language ; Recursive languages are also called decidable.
+  * 
+* can a FSM accept a type 2 language
+* what can be said about the intersection of two regular languages
+  * construct a DFA
+* intersection of two non-regular languages non-regular?
+* state precisely the myhill-nerode theorem
+* Q9, indistinguishability relation on the strings of an alphabet (in the context of myhill-nerode theorem)
+* Q10, if a language is not regular, what will myhill-nerode theorem based construction give?
+* Q11, given a regular language L, is every subset of L also regular? Justify
+* Q12, is a language consisting of finitely many strings regular? justify
+* Q13, can the same regular language have different grammars generating it? Justify
+* Q14, state arden's lemma and explain what it is used for
+* Q15, state precisely the pumping lemma for regular languages. use to prove a language regular?
+* Q16, Li, i N, be regular languages. U i=0..inf is also
+* Q17, Li, i N, be regular languages. 
+* Q18, when is a grammar of language ambiguous
+* Q19, is the intersection of CFLs a CFL
+* Q20, state precisely the pumping lemma for CFLs. In what way, is it different from the one for regular languages?
+* Q21, what is chomsky normal form for a CFG? How is it different from a CFG
+
+#### Part 2 ; constructions
+* Q1, give a state diagram of a DFA recognizing the following language. Generate a regular expr from the resulting machine.
+* Q2, give a state diagram of a NFA recognizing the following regular expr
+* Q3, construct a reg expr corresponding to the complement of the language generated by the reg expr
+* Q4, is the language regular? if yes, give a FSM. if no, give an argument proving that it is not regular.
+
+#### part 3 ; comprehensive
+* Q1, using the NFA below, is aabaa == aba?
+* Q2, obtain all the equivalence classes induced by the NFA using myhill-nerode theorem
+* Q3, convert the NFA to a DFA
+* Q4, minimize the states of the obtained DFA
+* Q5, using the minimized DFA, use Arden's lemma to get a regular expr for the language accepted by the machine
+* Q6, give a regular grammar for the language in 5
 
 ### midterm 2
 
 #### DCFL (deterministic)
 * http://www.cs.toronto.edu/~ashe/CFL.pdf
   * DCFL is not closed under union, and not closed under intersection.
+* 
+
+
+## Michael Sipser - Introduction to the Theory of Computation (2013)
+* THEOREM 1.26 The class of regular languages is closed under the concatenation operation.
+
+
+## Kozen - Automata and Computability 2012
+
+* If A and B are regular, then so is AB. To see this, let M be an automaton for A and N an automaton for B. Make a new automaton P whose states are the union of the state sets of M and N, and take all the transitions of M and N as transitions of P. Make the start states of M the start states of P and the final states of N the final states of P. Finally, put f-transitions from all the final states of M to all the start states of N. Then L(P) = AB.
+* 
+
+### Lecture 4
+* multiple of 3 in binary
+* the product construction
+  * Assume that A and B are regular. Then there are automata
+  * To show that An B is regular, we will build an automaton M3 such that L(M3) = An B.
+  * Intuitively, M3 will have the states of M1 and M2 encoded somehow in its states. On input x € *, it will simulate M₁ and M₂ simultaneously on x, accepting iff both M1 and M2 would accept. Think about putting a pebble down on the start state of M₁ and another on the start state of M2. As the input symbols come in, move both pebbles according to the rules of each machine. Accept if both pebbles occupy accept states in their respective machines when the end of the input string is reached.
+* 
+
+```
+The Product Construction
+Assume that A and B are regular. Then there are automata
+M1 = (Q1, 2, 61, S1, F1),
+M2 = (Q2, E, 82, 82, F2)
+with L(M1) = A and L(M2) = B. 
+```
+
+
+### Lecture 6 ; subset construction
+* more closure properties
+
+### Lecture 9 ; regular expressions and finite automata
+* Just because all states of an NFA are accept states doesn't mean that all  strings are accepted! Note that in Example 9.2, 000 is not accepted. 
+
+### Lecture 11 ; limitations of finite automata
+* Because of the alternating "for all/there exists" form of (.,P), we can think of this as a game between you and a demon.
+
+### Lecture 13 ; DFA state minimization
+* quotient construction
+  * The Quotient Construction  How do we know in general when two states can be collapsed safely without  changing the set accepted? How do we do the collapsing formally? Is there  a fast algorithm for doing it? How can we determine whether any further  collapsing is possible?  Surely we never want to collapse an accept state p and a reject state q,  because if p = 6(s, x) E F and q = 6(s,y) (j F, then x must be accepted  and y must be rejected even after collapsing, so there is no way to declare  the collapsed state to be an accept or reject state without error. Also, if  we collapse p and q, then we had better also collapse 6 (p, a) and 6 (q, a) to  maintain determinism. These two observations together imply inductively  that we cannot collapse p and q if 6(p, x) E F and 6(q,x) (j F for some  string x
+* 
+
+### Lecture 14 ; a minimization algorithm
+* Repeat the following until no more changes occur: if there exists an  unmarked pair {p,q} such that {6(p,a),6(q,a)} is marked for some  a E~, then mark {p,q}.
+* Correctness of the Collapsing Algorithm 
+  * Theorem 14.3 The pair {p, q} is marked by the above algorithm if and only if there exists  x E ~* such that 6(p, x) E F and 6( q, x) f/. F or vice versa; i. e., if and only  ifp ~ q.  Proof. This is easily proved by induction. We leave the proof as an exercise  (Miscellaneous Exercise 49). 
 * 
 
 ## 18-404j-t.o.c /lecture-notes/
